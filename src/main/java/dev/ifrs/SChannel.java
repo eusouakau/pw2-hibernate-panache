@@ -29,15 +29,15 @@ public class SChannel {
     }
 
     @GET
-   @Path("/add/{idChannel}/{idUser}")
+   @Path("/add/{idChannel}/{userId}")
    @Produces(MediaType.APPLICATION_JSON)
-   public User add(@PathParam("idChannel") Long idChannel, @PathParam("idUser") Long idUser) {
+   public User add(@PathParam("idChannel") Long idChannel, @PathParam("userId") Long userId) {
 
       Channel channel = Channel.findById(idChannel);
       if (channel == null)
          throw new BadRequestException("Channel not found");
 
-      User user = User.findById(idUser);
+      User user = User.findById(userId);
       if (user == null)
          throw new BadRequestException("User not found");
 

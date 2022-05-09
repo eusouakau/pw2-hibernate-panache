@@ -16,15 +16,15 @@ import dev.ifrs.model.User;
 public class SMessage {
 
    @GET
-   @Path("/message/save/{text}/{usetrId}")
+   @Path("/message/save/{text}/{userId}")
    @Produces(MediaType.APPLICATION_JSON)
-   public Message save(@PathParam("text") String text, @PathParam("idUser") Long idUser) {
+   public Message save(@PathParam("text") String text, @PathParam("userId") Long userId) {
 
       Message message = new Message();
       message.setText(text);
       message.persistAndFlush();
 
-      User user = User.findById(idUser);
+      User user = User.findById(userId);
       if (user == null)
          throw new BadRequestException("User not found");
 
